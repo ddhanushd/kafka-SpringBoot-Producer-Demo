@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: kafka-producer-example
+
+
+server:
+  port: 8080
+
+  Kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+
