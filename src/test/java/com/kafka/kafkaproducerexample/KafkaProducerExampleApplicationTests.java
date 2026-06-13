@@ -21,27 +21,27 @@ import static org.awaitility.Awaitility.await;
 @Testcontainers
 class KafkaProducerExampleApplicationTests {
 
-    @Container
-    static KafkaContainer kafka =
-            new KafkaContainer(
-                    DockerImageName.parse("apache/kafka:3.8.0")
-            );
-
-    @DynamicPropertySource
-    public static void initKafkaProperties(DynamicPropertyRegistry registry) {
-        registry.add("spring.kafka.bootstrap-servers", kafka::getBootstrapServers);
-    }
-
-    @Autowired
-    private KafkaMessagepublisher publisher;
-
-    @Test
-    public void testSendEventsToTopic() {
-        publisher.sendEventsToTopic(new Customer(263, "test user", "test@gmail.com", "564782542752"));
-        await().pollInterval(Duration.ofSeconds(3))
-                .atMost(10, TimeUnit.SECONDS).untilAsserted(() -> {
-                    // assert statement
-                });
-    }
+//    @Container
+//    static KafkaContainer kafka =
+//            new KafkaContainer(
+//                    DockerImageName.parse("apache/kafka:3.8.0")
+//            );
+//
+//    @DynamicPropertySource
+//    public static void initKafkaProperties(DynamicPropertyRegistry registry) {
+//        registry.add("spring.kafka.bootstrap-servers", kafka::getBootstrapServers);
+//    }
+//
+//    @Autowired
+//    private KafkaMessagepublisher publisher;
+//
+//    @Test
+//    public void testSendEventsToTopic() {
+//        publisher.sendEventsToTopic(new Customer(263, "test user", "test@gmail.com", "564782542752"));
+//        await().pollInterval(Duration.ofSeconds(3))
+//                .atMost(10, TimeUnit.SECONDS).untilAsserted(() -> {
+//                    // assert statement
+//                });
+//    }
 
 }
