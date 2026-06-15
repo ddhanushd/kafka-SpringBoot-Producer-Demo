@@ -17,16 +17,21 @@ public class KafkaMessagepublisher {
     }
 
     public void sendMessageToTopic(String message){
-        CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send("KafkaTopic-demo-2", message);
-        future.whenComplete((result,ex)->{
-            if (ex == null) {
-                System.out.println("Sent message=[" + message +
-                        "] with offset=[" + result.getRecordMetadata().offset() + "]");
-            } else {
-                System.out.println("Unable to send message=[" +
-                        message + "] due to : " + ex.getMessage());
-            }
-        });
+//        CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send("DhanushTopic", 3, null, message);
+//        future.whenComplete((result,ex)->{
+//            if (ex == null) {
+//                System.out.println("Sent message=[" + message +
+//                        "] with offset=[" + result.getRecordMetadata().offset() + "]");
+//            } else {
+//                System.out.println("Unable to send message=[" +
+//                        message + "] due to : " + ex.getMessage());
+//            }
+//        });
+        kafkaTemplate.send("DemoTopic", 0, null, "hi");
+        kafkaTemplate.send("DemoTopic", 1, null, "hello");
+        kafkaTemplate.send("DemoTopic", 2, null, "welcome");
+        kafkaTemplate.send("DemoTopic", 2, null, "hey");
+        kafkaTemplate.send("DemoTopic", 3, null, "superb");
 
     }
 
